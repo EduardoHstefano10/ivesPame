@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ivespame-streamlit:latest
+    container_name: ivespame
+    ports:
+      - "8501:8501"
+    environment:
+      # UNIFICAR=force regenera el dataset al arrancar. Por defecto "auto":
+      # solo lo genera si no existe.
+      UNIFICAR: "${UNIFICAR:-auto}"
+    volumes:
+      # Montamos la carpeta data/ para persistir el dataset generado en el host
+      # y que Streamlit pueda recargar cambios sin rebuild.
+      - ./data:/app/data
+      - ./models:/app/models
+    restart: unless-stopped

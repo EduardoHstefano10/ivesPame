@@ -11,7 +11,8 @@ import streamlit as st
 
 DATA_CSV = os.path.join("data", "processed", "endes_2024_unificado.csv")
 DATA_GZ = os.path.join("data", "processed", "endes_2024_unificado.csv.gz")
-DATA_PATH = DATA_CSV if os.path.exists(DATA_CSV) else DATA_GZ
+# Preferimos el .gz (estable, menor tamaño, no bloqueado por OneDrive).
+DATA_PATH = DATA_GZ if os.path.exists(DATA_GZ) else DATA_CSV
 
 DEPARTAMENTOS = {
     "01": "Amazonas", "02": "Áncash", "03": "Apurímac", "04": "Arequipa",

@@ -1,0 +1,14 @@
+.git
+.gitignore
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.log
+*.tmp
+.DS_Store
+notebooks/catboost_info
+data/processed/endes_2024_unificado.csv
+docs/*.png
+resources/*.pdf
+*.md
