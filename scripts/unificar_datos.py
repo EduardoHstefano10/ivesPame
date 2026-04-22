@@ -292,13 +292,28 @@ def build_programs_flags() -> pd.DataFrame:
 
 def assemble_final(child: pd.DataFrame, woman: pd.DataFrame,
                    household: pd.DataFrame, programs: pd.DataFrame) -> pd.DataFrame:
-    log("Ensamblaje final: niño + madre + hogar + programas...")
-    df = child.merge(woman, on="CASEID", how="left")
-    # El puente niño->hogar es HHID que vino desde REC0111 (prefijado M01_HHID).
-    hhid_col = "M01_HHID" if "M01_HHID" in df.columns else "HHID"
-    if hhid_col != "HHID":
-        df = df.rename(columns={hhid_col: "HHID"})
-    df = df.merge(household, on="HHID", how="left")
+    """Ensambla con full outer join para preservar TODAS las filas de todos
+    los módulos (hogares sin mujer y mujeres sin niño también quedan)."""
+    log("Ensamblaje final (outer): hogar + madre + niño + programas...")
+
+    # Puente niño -> hogar usando el HHID que trae el bloque madre (M01_HHID).
+    hhid_col = "M01_HHID" if "M01_HHID" in woman.columns else "HHID"
+    if hhid_col != "HHID" and "HHID" not in woman.columns:
+        woman = woman.rename(columns={hhid_col: "HHID"})
+    elif hhid_col != "HHID":
+        woman["HHID"] = woman["HHID"].fillna(woman[hhid_col])
+
+    # 1) Madre ⋈ Niño por CASEID (outer): 37 117 mujeres (las que tienen niño
+    #    <5 años se enriquecen con las columnas del niño).
+    mn = woman.merge(child, on="CASEID", how="outer")
+    log(f"  madre ⋈ niño (outer): {mn.shape}")
+
+    # 2) Hogar ⋈ (madre+niño) por HHID (outer): 37 390 hogares, algunos sin
+    #    entrevista individual de mujer.
+    df = household.merge(mn, on="HHID", how="outer")
+    log(f"  hogar ⋈ madre+niño (outer): {df.shape}")
+
+    # 3) Programas sociales (flags por HHID).
     df = df.merge(programs, on="HHID", how="left")
     prog_cols = [c for c in df.columns if c.startswith("programa_")]
     for c in prog_cols:
@@ -400,22 +415,30 @@ def main() -> int:
     df = feature_engineering(df)
     df = reorder_columns(df)
 
-    # Filtrado ligero: exigir identificadores clave presentes.
+    # Requerimos al menos HHID (toda fila viene de algún hogar). No se
+    # descartan filas sin niño ni sin madre: así queda TODA la data de todos
+    # los módulos (niveles hogar, madre y niño conviven en la misma tabla).
     before = len(df)
-    df = df.dropna(subset=["CASEID", "NINIO_IDX"])
-    log(f"Filtro identificadores: {before} -> {len(df)} filas")
+    df = df.dropna(subset=["HHID"])
+    log(f"Filtro HHID no nulo: {before} -> {len(df)} filas")
 
-    # Unicidad a nivel niño: una fila por (CASEID, NINIO_IDX).
+    # Deduplicación: la llave natural ahora es (HHID, CASEID, NINIO_IDX).
     before = len(df)
-    df = df.drop_duplicates(subset=["CASEID", "NINIO_IDX"], keep="first")
+    df = df.drop_duplicates(subset=["HHID", "CASEID", "NINIO_IDX"], keep="first")
     if before != len(df):
-        log(f"drop_duplicates niño: {before} -> {len(df)} filas")
+        log(f"drop_duplicates: {before} -> {len(df)} filas")
 
     log(f"Guardando CSV unificado en {OUT_PATH} ...")
     df.to_csv(OUT_PATH, index=False)
+
+    # Versión comprimida (cabe en GitHub y se lee directo con pd.read_csv).
+    gz_path = OUT_PATH.with_suffix(".csv.gz")
+    log(f"Guardando versión comprimida en {gz_path} ...")
+    df.to_csv(gz_path, index=False, compression="gzip")
+
     log(f"OK. Dimensiones finales: {df.shape}")
-    log(f"Cobertura target Desnutricion_Cronica: "
-        f"{df['Desnutricion_Cronica'].notna().sum()} no nulos de {len(df)}")
+    target_nn = df["Desnutricion_Cronica"].notna().sum() if "Desnutricion_Cronica" in df.columns else 0
+    log(f"Cobertura target Desnutricion_Cronica: {target_nn} no nulos de {len(df)}")
     return 0
 
 
