@@ -7,6 +7,8 @@ import os
 import plotly.express as px
 import plotly.graph_objects as go
 
+from dashboard_geografico import dashboard_geografico_page
+
 
 MODEL_PATH = os.path.join("models", "desnutricion_model_v1.joblib")
 METADATA_PATH = os.path.join("models", "desnutricion_model_v1_metadata.json")
@@ -418,7 +420,7 @@ def main():
         st.title("Navegación")
         page = st.radio(
             "Seleccione una página:",
-            ["🔮 Predicción Individual", "📈 Análisis del Modelo"],
+            ["🔮 Predicción Individual", "📈 Análisis del Modelo", "🗺️ Dashboard Geográfico"],
             label_visibility="collapsed"
         )
 
@@ -439,6 +441,11 @@ def main():
 
         st.markdown("---")
         st.caption("© 2025 - Predictor de Desnutrición Infantil")
+
+    # El dashboard geográfico no depende del modelo
+    if page == "🗺️ Dashboard Geográfico":
+        dashboard_geografico_page()
+        return
 
     # Cargar modelo y metadatos
     try:
