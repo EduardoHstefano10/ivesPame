@@ -61,6 +61,7 @@ CHILD_FILES: dict[str, tuple[Path, str]] = {
     "REC41":  (RAW_DIR / "968-Modulo1633" / "REC41_2024.csv", "MIDX"),    # embarazo/parto
     "REC43":  (RAW_DIR / "968-Modulo1634" / "REC43_2024.csv", "HIDX"),    # vacunas/enfermedades
     "DIT":    (RAW_DIR / "968-Modulo1634" / "DIT_2024.csv",   "BIDX"),    # desarrollo infantil
+    "REC21":  (RAW_DIR / "968-Modulo1632" / "REC21_2024.csv", "BIDX"),    # historia de nacimientos
 }
 
 # Modulos a nivel de mujer (grano: CASEID).
@@ -71,16 +72,26 @@ WOMAN_FILES: dict[str, Path] = {
     "REC42":    RAW_DIR / "968-Modulo1634" / "REC42_2024.csv",
     "RE516171": RAW_DIR / "968-Modulo1635" / "RE516171_2024.csv",
     "RE758081": RAW_DIR / "968-Modulo1636" / "RE758081_2024.csv",
+    "REC82":    RAW_DIR / "968-Modulo1636" / "REC82_2024.csv",
+    "REC83":    RAW_DIR / "968-Modulo1637" / "REC83_2024.csv",
     "REC84DV":  RAW_DIR / "968-Modulo1637" / "REC84DV_2024.csv",
+    "REC94":    RAW_DIR / "968-Modulo1633" / "REC94_2024.csv",
+    "REC95":    RAW_DIR / "968-Modulo1634" / "REC95_2024.csv",
     "REC93DV":  RAW_DIR / "968-Modulo1639" / "REC93DVdisciplina_2024.csv",
 }
 
 # Modulos a nivel de hogar (grano: HHID).
 HH_FILES: dict[str, Path] = {
     "RECH0":    RAW_DIR / "968-Modulo1629" / "RECH0_2024.csv",
+    "RECH1":    RAW_DIR / "968-Modulo1629" / "RECH1_2024.csv",    # miembros (1ra fila/jefe)
+    "RECH4":    RAW_DIR / "968-Modulo1629" / "RECH4_2024.csv",    # educacion miembros
+    "RECHM":    RAW_DIR / "968-Modulo1629" / "RECHM_2024.csv",    # mortalidad hogar
     "RECH23":   RAW_DIR / "968-Modulo1630" / "RECH23_2024.csv",
+    "RECH5":    RAW_DIR / "968-Modulo1638" / "RECH5_2024.csv",    # antropometria mujeres
+    "RECH6":    RAW_DIR / "968-Modulo1638" / "RECH6_2024.csv",    # antropometria niños
     "PS_HOGAR": RAW_DIR / "968-Modulo1641" / "Programas Sociales x Hogar_2024.csv",
     "CSALUD01": RAW_DIR / "968-Modulo1640" / "CSALUD01_2024.csv",
+    "CSALUD08": RAW_DIR / "968-Modulo1640" / "CSALUD08_2024.csv",
 }
 
 # Programas sociales (varias filas por hogar -> flag binaria).
