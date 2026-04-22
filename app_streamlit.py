@@ -46,7 +46,11 @@ def get_ohe_categories(best_estimator):
 def load_data():
     """Cargar dataset para visualizaciones"""
     if os.path.exists(DATA_PATH):
-        return pd.read_csv(DATA_PATH)
+        df = pd.read_csv(DATA_PATH)
+        df.columns = df.columns.str.strip()
+        for c in df.select_dtypes(include="object").columns:
+            df[c] = df[c].str.strip()
+        return df
     return None
 
 
