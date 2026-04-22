@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import re
 import sys
+import time
 from pathlib import Path
 from typing import Iterable
 
@@ -401,6 +402,7 @@ def reorder_columns(df: pd.DataFrame) -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 
 def main() -> int:
+    t0 = time.perf_counter()
     if not RAW_DIR.exists():
         log(f"ERROR: no existe {RAW_DIR}")
         return 1
@@ -439,6 +441,7 @@ def main() -> int:
     log(f"OK. Dimensiones finales: {df.shape}")
     target_nn = df["Desnutricion_Cronica"].notna().sum() if "Desnutricion_Cronica" in df.columns else 0
     log(f"Cobertura target Desnutricion_Cronica: {target_nn} no nulos de {len(df)}")
+    log(f"Tiempo total: {time.perf_counter() - t0:.1f} s")
     return 0
 
 
