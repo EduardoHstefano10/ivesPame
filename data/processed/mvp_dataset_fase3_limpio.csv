@@ -1931,8 +1931,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 361908201 5,361908201,361908201-5-1,-1.11,24.0,2.54,147.5,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Superior,0
 361908901 1,361908901,361908901-1-1,-0.8,30.0,3.365,147.8,Urbano,Agua por red pública (dentro),Red pública (dentro),Rico,Superior,0
 361916401 2,361916401,361916401-2-1,-0.74,9.0,2.35,152.3,Urbano,Agua embotellada,Letrina mejorada (ventilada),Pobre,Secundaria,0
-361918001 7,361918001,361918001-7-1,-2.54,14.0,3.285,157.0,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Más Pobre,Primaria,1
 361918001 17,361918001,361918001-17-1,-1.47,45.0,3.7,149.4,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Más Pobre,Superior,0
+361918001 7,361918001,361918001-7-1,-2.54,14.0,3.285,157.0,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Más Pobre,Primaria,1
 362012401 2,362012401,362012401-2-1,-2.78,19.0,2.8,155.0,Rural,Pozo (público),Sin servicio (campo),Más Pobre,Primaria,1
 362100701 7,362100701,362100701-7-1,-0.89,7.0,3.3,159.5,Rural,Río/Acequia/Laguna,Sin servicio (campo),Más Pobre,Primaria,0
 362103201 2,362103201,362103201-2-1,-2.13,17.0,4.0,160.9,Rural,Río/Acequia/Laguna,Sin servicio (campo),Más Pobre,Primaria,1
@@ -1968,18 +1968,18 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 362503501 1,362503501,362503501-1-1,-1.01,13.0,3.43,152.8,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Superior,0
 362505001 3,362505001,362505001-3-1,1.01,7.0,4.375,146.7,Urbano,Agua por red pública (dentro),Red pública (dentro),Rico,Superior,0
 362506301 2,362506301,362506301-2-1,0.39,33.0,3.2,151.4,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,0
+362602501 12,362602501,362602501-12-1,-0.27,38.0,3.28,148.4,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Secundaria,0
 362602501 2,362602501,362602501-2-1,-1.43,3.0,2.57,154.7,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Secundaria,0
 362602501 6,362602501,362602501-6-1,-0.5,4.0,2.62,149.5,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Secundaria,0
-362602501 12,362602501,362602501-12-1,-0.27,38.0,3.28,148.4,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Secundaria,0
 362603101 4,362603101,362603101-4-1,0.12,11.0,2.93,150.8,Urbano,Agua embotellada,Red pública (dentro),Pobre,Secundaria,0
 362603401 4,362603401,362603401-4-1,0.56,45.0,4.04,157.5,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Superior,0
 362605701 1,362605701,362605701-1-1,-0.31,33.0,3.1,155.5,Urbano,Agua embotellada,Red pública (dentro),Pobre,Secundaria,0
 362606201 1,362606201,362606201-1-1,0.15,34.0,3.65,155.1,Urbano,Agua embotellada,Red pública (dentro),Rico,Superior,0
 362700601 4,362700601,362700601-4-1,-0.69,30.0,3.15,156.1,Urbano,Agua por red pública (dentro),Red pública (fuera),Pobre,Superior,0
 362702101 2,362702101,362702101-2-1,-0.98,34.0,2.5,149.3,Urbano,Agua embotellada,Red pública (dentro),Medio,Superior,0
-362704501 8,362704501,362704501-8-1,-0.18,12.0,3.2,158.5,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Primaria,0
 362704501 13,362704501,362704501-13-1,-1.82,25.0,3.2,153.7,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Primaria,0
 362704501 13,362704501,362704501-13-2,-1.13,55.0,3.2,153.7,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Primaria,0
+362704501 8,362704501,362704501-8-1,-0.18,12.0,3.2,158.5,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Primaria,0
 362705701 1,362705701,362705701-1-1,0.67,27.0,3.49,147.4,Urbano,Agua embotellada,Red pública (dentro),Medio,Secundaria,0
 362707001 1,362707001,362707001-1-1,-0.72,15.0,3.8,156.1,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Secundaria,0
 362707701 2,362707701,362707701-2-1,-0.25,58.0,3.9,151.6,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Superior,0
@@ -2945,8 +2945,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 378707501 2,378707501,378707501-2-1,-0.29,48.0,2.82,161.2,Urbano,Agua embotellada,Letrina mejorada (ventilada),Pobre,Superior,0
 378708801 4,378708801,378708801-4-1,-2.16,49.0,2.275,150.6,Urbano,Agua por red pública (dentro),Pozo séptico,Más Pobre,Superior,1
 378711201 3,378711201,378711201-3-1,-0.63,37.0,3.26,156.6,Urbano,Agua embotellada,Letrina mejorada (ventilada),Pobre,Superior,0
-378712201 9,378712201,378712201-9-1,-2.15,40.0,2.75,153.0,Urbano,Agua embotellada,Red pública (dentro),Pobre,Superior,1
 378712201 11,378712201,378712201-11-1,-0.65,31.0,3.4,152.0,Urbano,Agua embotellada,Red pública (dentro),Pobre,Secundaria,0
+378712201 9,378712201,378712201-9-1,-2.15,40.0,2.75,153.0,Urbano,Agua embotellada,Red pública (dentro),Pobre,Superior,1
 378716901 4,378716901,378716901-4-1,1.09,22.0,3.39,159.5,Urbano,Agua embotellada,Red pública (dentro),Medio,Superior,0
 378801701 5,378801701,378801701-5-1,-0.09,8.0,4.265,153.8,Urbano,Agua embotellada,Red pública (dentro),Pobre,Superior,0
 378807401 5,378807401,378807401-5-1,-3.3,48.0,3.2,152.5,Urbano,Agua embotellada,Red pública (dentro),Medio,Secundaria,1
@@ -3706,8 +3706,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 392400401 2,392400401,392400401-2-1,0.28,31.0,3.095,152.6,Urbano,Agua por red pública (dentro),Red pública (dentro),Rico,Secundaria,0
 392411701 1,392411701,392411701-1-1,0.4,50.0,3.4,157.0,Urbano,Agua por red pública (dentro),Red pública (dentro),Rico,Superior,0
 392504101 2,392504101,392504101-2-1,-0.55,30.0,4.05,155.0,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,0
-392509001 7,392509001,392509001-7-1,-1.95,1.0,2.925,141.7,Urbano,Agua embotellada,Red pública (dentro),Rico,Secundaria,0
 392509001 11,392509001,392509001-11-1,-1.49,42.0,3.425,141.1,Urbano,Agua embotellada,Red pública (dentro),Rico,Secundaria,0
+392509001 7,392509001,392509001-7-1,-1.95,1.0,2.925,141.7,Urbano,Agua embotellada,Red pública (dentro),Rico,Secundaria,0
 392512701 4,392512701,392512701-4-1,-1.5,13.0,2.48,141.8,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Secundaria,0
 392515201 5,392515201,392515201-5-1,-0.78,26.0,2.945,148.9,Urbano,Agua por red pública (dentro),Red pública (dentro),Rico,Primaria,0
 392516601 2,392516601,392516601-2-1,-0.42,17.0,4.009,154.4,Urbano,Agua por red pública (dentro),Red pública (dentro),Rico,Secundaria,0
@@ -4046,8 +4046,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 398707301 2,398707301,398707301-2-1,-1.09,40.0,3.72,149.0,Rural,Río/Acequia/Laguna,Sin servicio (campo),Más Pobre,Primaria,0
 398709201 3,398709201,398709201-3-1,-0.96,14.0,2.4,155.6,Rural,Agua por red pública (dentro),Letrina mejorada (ventilada),Más Pobre,Secundaria,0
 398709401 1,398709401,398709401-1-1,0.72,2.0,3.01,140.7,Rural,Agua por red pública (dentro),Letrina mejorada (ventilada),Más Pobre,Secundaria,0
-398709701 5,398709701,398709701-5-1,-1.71,24.0,3.53,150.6,Rural,Agua embotellada,Letrina mejorada (ventilada),Más Pobre,Secundaria,0
 398709701 10,398709701,398709701-10-1,-1.9,46.0,3.06,151.9,Rural,Agua embotellada,Letrina mejorada (ventilada),Más Pobre,Secundaria,0
+398709701 5,398709701,398709701-5-1,-1.71,24.0,3.53,150.6,Rural,Agua embotellada,Letrina mejorada (ventilada),Más Pobre,Secundaria,0
 398709801 6,398709801,398709801-6-1,0.53,7.0,3.7,155.3,Rural,Agua por red pública (dentro),Letrina mejorada (ventilada),Más Pobre,Superior,0
 398801701 2,398801701,398801701-2-1,-1.22,32.0,3.9,155.3,Urbano,Agua embotellada,Red pública (dentro),Medio,Superior,0
 398806301 2,398806301,398806301-2-1,-0.02,27.0,2.1,151.4,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,0
@@ -4958,8 +4958,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 415810401 2,415810401,415810401-2-1,-1.29,9.0,4.0,147.7,Rural,Agua por red pública (pilón),Letrina mejorada (ventilada),Más Pobre,Secundaria,0
 415909301 2,415909301,415909301-2-1,-1.54,9.0,2.82,146.1,Rural,Río/Acequia/Laguna,Letrina (pozo ciego),Más Pobre,Secundaria,0
 415909301 2,415909301,415909301-2-2,-2.68,38.0,2.85,146.1,Rural,Río/Acequia/Laguna,Letrina (pozo ciego),Más Pobre,Secundaria,1
-415912301 8,415912301,415912301-8-1,-1.6,51.0,3.1,148.5,Rural,Río/Acequia/Laguna,Letrina mejorada (ventilada),Más Pobre,Secundaria,0
 415912301 13,415912301,415912301-13-1,-2.79,41.0,2.8,150.2,Rural,Río/Acequia/Laguna,Letrina mejorada (ventilada),Más Pobre,Secundaria,1
+415912301 8,415912301,415912301-8-1,-1.6,51.0,3.1,148.5,Rural,Río/Acequia/Laguna,Letrina mejorada (ventilada),Más Pobre,Secundaria,0
 415916301 2,415916301,415916301-2-1,-1.89,14.0,3.0,154.1,Rural,Agua de lluvia,Letrina (pozo ciego),Más Pobre,Primaria,0
 415916401 2,415916401,415916401-2-1,-0.84,14.0,3.5,142.5,Rural,Río/Acequia/Laguna,Sin servicio (campo),Más Pobre,Primaria,0
 416000101 2,416000101,416000101-2-1,0.57,10.0,3.7,157.4,Rural,Agua por red pública (dentro),Sin servicio (campo),Más Pobre,Secundaria,0
@@ -5454,8 +5454,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 425501001 2,425501001,425501001-2-1,-3.79,20.0,2.9,147.8,Rural,Agua por red pública (pilón),Sin servicio (campo),Más Pobre,Secundaria,1
 425505601 1,425505601,425505601-1-1,-1.15,49.0,3.0,145.9,Rural,Río/Acequia/Laguna,Letrina (pozo ciego),Más Pobre,Primaria,0
 425601601 2,425601601,425601601-2-1,-0.53,6.0,3.0,141.8,Rural,Agua por red pública (dentro),Pozo séptico,Más Pobre,Secundaria,0
-425609601 2,425609601,425609601-2-1,-0.15,57.0,4.02,151.6,Rural,Pozo (dentro de viv.),Letrina (pozo ciego),Más Pobre,Primaria,0
 425609601 10,425609601,425609601-10-1,-0.36,0.0,2.98,152.6,Rural,Pozo (dentro de viv.),Letrina (pozo ciego),Más Pobre,Secundaria,0
+425609601 2,425609601,425609601-2-1,-0.15,57.0,4.02,151.6,Rural,Pozo (dentro de viv.),Letrina (pozo ciego),Más Pobre,Primaria,0
 425700101 1,425700101,425700101-1-1,-0.77,41.0,2.6,159.4,Rural,Camión cisterna,Letrina (pozo ciego),Pobre,Sin Educación,0
 425700501 1,425700501,425700501-1-1,1.04,11.0,3.7,158.9,Rural,Camión cisterna,Letrina (pozo ciego),Más Pobre,Secundaria,0
 425703301 2,425703301,425703301-2-1,-0.3,8.0,2.68,148.1,Rural,Pozo (dentro de viv.),Sin servicio (campo),Más Pobre,Secundaria,0
@@ -5966,8 +5966,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 433806801 2,433806801,433806801-2-1,-0.71,14.0,3.0,146.7,Rural,Manantial (puquio),Sin servicio (campo),Más Pobre,Secundaria,0
 433806801 2,433806801,433806801-2-2,-0.51,39.0,3.12,146.7,Rural,Manantial (puquio),Sin servicio (campo),Más Pobre,Secundaria,0
 433817601 2,433817601,433817601-2-1,-0.1,13.0,3.482,152.6,Rural,Agua por red pública (dentro),Sin servicio (campo),Más Pobre,Secundaria,0
-433817801 3,433817801,433817801-3-1,0.04,5.0,3.69,151.1,Rural,Agua por red pública (dentro),Red pública (dentro),Pobre,Primaria,0
 433817801 11,433817801,433817801-11-1,-0.93,7.0,3.33,141.9,Rural,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,0
+433817801 3,433817801,433817801-3-1,0.04,5.0,3.69,151.1,Rural,Agua por red pública (dentro),Red pública (dentro),Pobre,Primaria,0
 433900101 2,433900101,433900101-2-1,-1.38,11.0,3.05,147.2,Rural,Agua por red pública (pilón),Letrina (pozo ciego),Más Pobre,Secundaria,0
 433900301 2,433900301,433900301-2-1,-3.17,0.0,2.79,146.3,Rural,Agua por red pública (pilón),Letrina (pozo ciego),Más Pobre,Primaria,1
 433900301 2,433900301,433900301-2-2,-2.27,39.0,2.65,146.3,Rural,Agua por red pública (pilón),Letrina (pozo ciego),Más Pobre,Primaria,1
@@ -6058,9 +6058,9 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 435407501 1,435407501,435407501-1-1,-1.25,22.0,2.2,147.3,Rural,Río/Acequia/Laguna,Sin servicio (campo),Más Pobre,Secundaria,0
 435407701 2,435407701,435407701-2-1,-2.78,24.0,3.5,150.9,Rural,Manantial (puquio),Letrina (pozo ciego),Más Pobre,Primaria,1
 435416901 2,435416901,435416901-2-1,0.14,12.0,2.6,156.2,Rural,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Primaria,0
+435417001 11,435417001,435417001-11-1,-1.17,1.0,3.1,153.3,Rural,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Primaria,0
 435417001 7,435417001,435417001-7-1,-0.34,0.0,4.1,156.9,Rural,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Secundaria,0
 435417001 7,435417001,435417001-7-2,-1.09,40.0,3.8,156.9,Rural,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Secundaria,0
-435417001 11,435417001,435417001-11-1,-1.17,1.0,3.1,153.3,Rural,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Primaria,0
 435417101 2,435417101,435417101-2-1,-2.01,19.0,3.0,152.2,Rural,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Primaria,1
 435417101 2,435417101,435417101-2-2,-1.78,54.0,3.5,152.2,Rural,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Primaria,0
 435417301 5,435417301,435417301-5-1,-2.31,35.0,3.0,159.1,Rural,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Secundaria,1
@@ -7967,8 +7967,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 472104301 2,472104301,472104301-2-1,0.36,10.0,3.69,144.5,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,0
 472104901 2,472104901,472104901-2-1,-0.04,16.0,3.31,156.4,Urbano,Agua por red pública (dentro),Red pública (dentro),Rico,Primaria,0
 472106801 2,472106801,472106801-2-1,-1.65,31.0,2.4,153.0,Urbano,Agua embotellada,Red pública (dentro),Rico,Superior,0
-472107001 2,472107001,472107001-2-1,-2.74,13.0,4.9,141.8,Urbano,Camión cisterna,Letrina mejorada (ventilada),Pobre,Secundaria,1
 472107001 10,472107001,472107001-10-1,-1.48,9.0,3.93,147.7,Urbano,Camión cisterna,Letrina mejorada (ventilada),Pobre,Secundaria,0
+472107001 2,472107001,472107001-2-1,-2.74,13.0,4.9,141.8,Urbano,Camión cisterna,Letrina mejorada (ventilada),Pobre,Secundaria,1
 472201201 2,472201201,472201201-2-1,-0.56,59.0,3.08,158.8,Urbano,Agua embotellada,Pozo séptico,Pobre,Secundaria,0
 472203201 2,472203201,472203201-2-1,-1.28,49.0,3.14,164.3,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Medio,Superior,0
 472206601 5,472206601,472206601-5-1,0.43,49.0,3.6,159.1,Urbano,Agua por red pública (dentro),Letrina (pozo ciego),Medio,Secundaria,0
@@ -8268,9 +8268,9 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 477307301 2,477307301,477307301-2-1,-0.45,45.0,3.3,151.4,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Pobre,Primaria,0
 477311001 2,477311001,477311001-2-1,-1.97,23.0,2.37,157.2,Urbano,Camión cisterna,Letrina mejorada (ventilada),Pobre,Secundaria,0
 477311601 1,477311601,477311601-1-1,-2.52,31.0,4.5,156.2,Urbano,Camión cisterna,Red pública (dentro),Pobre,Secundaria,1
+477400201 13,477400201,477400201-13-1,-2.14,2.0,2.3,137.4,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,1
 477400201 4,477400201,477400201-4-1,-1.86,22.0,2.725,154.5,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,0
 477400201 7,477400201,477400201-7-1,0.95,30.0,3.4,155.2,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,0
-477400201 13,477400201,477400201-13-1,-2.14,2.0,2.3,137.4,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,1
 477410101 2,477410101,477410101-2-1,0.86,9.0,3.95,156.8,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Secundaria,0
 477413401 2,477413401,477413401-2-1,-1.11,31.0,3.5,150.4,Urbano,Agua embotellada,Red pública (dentro),Rico,Superior,0
 477500201 2,477500201,477500201-2-1,-1.4,27.0,3.2,154.3,Urbano,Agua por red pública (dentro),Red pública (dentro),Rico,Secundaria,0
@@ -8294,8 +8294,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 477703302 1,477703302,477703302-1-1,-1.42,22.0,2.98,146.6,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,0
 477705001 4,477705001,477705001-4-1,-2.84,23.0,3.3,150.0,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Superior,1
 477708601 2,477708601,477708601-2-1,-1.28,55.0,2.8,149.3,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,0
-477800401 8,477800401,477800401-8-1,-2.17,12.0,3.5,149.4,Urbano,Agua por red pública (dentro),Sin servicio (campo),Pobre,Superior,1
 477800401 10,477800401,477800401-10-1,-2.79,31.0,2.46,144.7,Urbano,Agua por red pública (dentro),Sin servicio (campo),Pobre,Primaria,1
+477800401 8,477800401,477800401-8-1,-2.17,12.0,3.5,149.4,Urbano,Agua por red pública (dentro),Sin servicio (campo),Pobre,Superior,1
 477804501 2,477804501,477804501-2-1,-1.14,39.0,2.3,145.3,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Pobre,Secundaria,0
 477814201 2,477814201,477814201-2-1,-2.52,3.0,2.4,149.2,Urbano,Agua por red pública (dentro),Red pública (dentro),Rico,Primaria,1
 477814501 7,477814501,477814501-7-1,-2.49,33.0,2.9,141.8,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,1
@@ -8306,8 +8306,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 477907101 5,477907101,477907101-5-1,-1.27,8.0,3.2,152.3,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,0
 477907101 5,477907101,477907101-5-2,-1.09,56.0,3.18,152.3,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,0
 478001001 6,478001001,478001001-6-1,-0.7,11.0,3.3,150.6,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Rico,Superior,0
-478003701 8,478003701,478003701-8-1,0.56,2.0,3.3,157.6,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Medio,Superior,0
 478003701 11,478003701,478003701-11-1,-0.38,12.0,3.2,151.8,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Medio,Secundaria,0
+478003701 8,478003701,478003701-8-1,0.56,2.0,3.3,157.6,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Medio,Superior,0
 478005101 2,478005101,478005101-2-1,-0.13,43.0,3.7,155.6,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Pobre,Secundaria,0
 478006501 5,478006501,478006501-5-1,-1.47,7.0,3.085,150.6,Urbano,Agua embotellada,Sin servicio (campo),Pobre,Superior,0
 478008101 2,478008101,478008101-2-1,-1.73,8.0,2.45,141.6,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Pobre,Primaria,0
@@ -8321,8 +8321,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 478103901 2,478103901,478103901-2-2,-2.02,47.0,2.905,147.8,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Pobre,Secundaria,1
 478109301 3,478109301,478109301-3-1,-0.86,16.0,3.62,163.1,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Rico,Secundaria,0
 478109401 4,478109401,478109401-4-1,-1.29,46.0,3.8,143.3,Urbano,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Secundaria,0
-478205501 8,478205501,478205501-8-1,0.02,55.0,2.3,150.9,Urbano,Camión cisterna,Letrina mejorada (ventilada),Medio,Primaria,0
 478205501 10,478205501,478205501-10-1,-0.26,28.0,3.2,150.6,Urbano,Camión cisterna,Letrina mejorada (ventilada),Medio,Primaria,0
+478205501 8,478205501,478205501-8-1,0.02,55.0,2.3,150.9,Urbano,Camión cisterna,Letrina mejorada (ventilada),Medio,Primaria,0
 478206401 2,478206401,478206401-2-1,-0.76,58.0,3.5,160.4,Urbano,Agua embotellada,Sin servicio (campo),Más Pobre,Secundaria,0
 478206901 1,478206901,478206901-1-1,-1.25,5.0,1.548,149.8,Urbano,Camión cisterna,Letrina mejorada (ventilada),Medio,Secundaria,0
 478207701 2,478207701,478207701-2-1,-2.3,32.0,3.7,153.4,Urbano,Camión cisterna,Sin servicio (campo),Pobre,Secundaria,1
@@ -9855,8 +9855,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 505905601 1,505905601,505905601-1-1,-1.44,23.0,3.46,145.4,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Primaria,0
 506001401 2,506001401,506001401-2-1,-1.49,25.0,3.88,148.5,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,0
 506001401 2,506001401,506001401-2-2,-0.9,49.0,3.295,148.5,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,0
-506005801 2,506005801,506005801-2-1,0.23,43.0,3.8,152.0,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,0
 506005801 12,506005801,506005801-12-1,-0.13,35.0,3.65,157.6,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,0
+506005801 2,506005801,506005801-2-1,0.23,43.0,3.8,152.0,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,0
 506007401 2,506007401,506007401-2-1,0.41,4.0,3.16,155.1,Urbano,Agua por red pública (dentro),Red pública (dentro),Rico,Superior,0
 506007601 1,506007601,506007601-1-1,0.19,46.0,3.885,154.0,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,0
 506009801 7,506009801,506009801-7-1,-3.15,14.0,2.57,150.0,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,1
@@ -10296,8 +10296,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 513510401 2,513510401,513510401-2-2,0.93,57.0,3.5,151.2,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Secundaria,0
 513600701 5,513600701,513600701-5-1,-2.23,7.0,1.92,167.3,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,1
 513601201 2,513601201,513601201-2-1,0.91,48.0,3.0,160.2,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,0
-513603201 7,513603201,513603201-7-1,-3.25,11.0,3.039,158.0,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Secundaria,1
 513603201 10,513603201,513603201-10-1,-1.16,39.0,2.6,160.3,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,0
+513603201 7,513603201,513603201-7-1,-3.25,11.0,3.039,158.0,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Secundaria,1
 513609901 3,513609901,513609901-3-1,-1.11,43.0,2.4,157.0,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Superior,0
 513612901 3,513612901,513612901-3-1,-0.69,2.0,3.48,153.6,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Superior,0
 513615801 2,513615801,513615801-2-1,-0.25,14.0,3.4,163.5,Urbano,Agua por red pública (dentro),Red pública (dentro),Rico,Superior,0
@@ -10874,8 +10874,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 524713301 2,524713301,524713301-2-1,-2.0,21.0,3.3,152.2,Rural,Agua por red pública (pilón),Sin servicio (campo),Más Pobre,Secundaria,0
 524801301 4,524801301,524801301-4-1,-1.42,28.0,3.04,152.9,Rural,Pozo (público),Letrina (pozo ciego),Más Pobre,Secundaria,0
 524802401 2,524802401,524802401-2-1,-2.07,32.0,3.4,151.3,Rural,Río/Acequia/Laguna,Letrina (pozo ciego),Más Pobre,Primaria,1
-524802501 6,524802501,524802501-6-1,-1.02,14.0,3.21,150.6,Rural,Río/Acequia/Laguna,Letrina (pozo ciego),Más Pobre,Secundaria,0
 524802501 12,524802501,524802501-12-1,-1.49,26.0,3.5,156.4,Rural,Río/Acequia/Laguna,Letrina (pozo ciego),Más Pobre,Secundaria,0
+524802501 6,524802501,524802501-6-1,-1.02,14.0,3.21,150.6,Rural,Río/Acequia/Laguna,Letrina (pozo ciego),Más Pobre,Secundaria,0
 524802601 3,524802601,524802601-3-1,-1.23,10.0,3.52,156.2,Rural,Río/Acequia/Laguna,Letrina (pozo ciego),Más Pobre,Primaria,0
 524807101 2,524807101,524807101-2-1,-0.25,9.0,3.08,147.2,Rural,Río/Acequia/Laguna,Letrina (pozo ciego),Más Pobre,Secundaria,0
 524807101 2,524807101,524807101-2-2,-0.42,56.0,2.7,147.2,Rural,Río/Acequia/Laguna,Letrina (pozo ciego),Más Pobre,Secundaria,0
@@ -13733,9 +13733,9 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 577804401 7,577804401,577804401-7-1,-0.23,10.0,3.63,157.7,Urbano,Agua embotellada,Red pública (dentro),Medio,Superior,0
 577813801 2,577813801,577813801-2-1,-0.43,53.0,2.99,152.1,Urbano,Agua embotellada,Red pública (dentro),Rico,Primaria,0
 577902501 1,577902501,577902501-1-1,0.49,49.0,3.019,160.6,Urbano,Agua embotellada,Red pública (dentro),Pobre,Superior,0
-577904501 8,577904501,577904501-8-1,0.03,29.0,3.435,146.1,Urbano,Agua embotellada,Red pública (dentro),Medio,Superior,0
 577904501 10,577904501,577904501-10-1,-1.3,16.0,2.8,152.8,Urbano,Agua embotellada,Red pública (dentro),Medio,Secundaria,0
 577904501 13,577904501,577904501-13-1,-0.58,55.0,2.6,156.1,Urbano,Agua embotellada,Red pública (dentro),Medio,Secundaria,0
+577904501 8,577904501,577904501-8-1,0.03,29.0,3.435,146.1,Urbano,Agua embotellada,Red pública (dentro),Medio,Superior,0
 577910701 2,577910701,577910701-2-1,-1.27,36.0,3.5,147.6,Urbano,Agua embotellada,Red pública (dentro),Rico,Superior,0
 577911802 2,577911802,577911802-2-1,-0.88,38.0,2.8,149.8,Urbano,Agua embotellada,Red pública (dentro),Medio,Secundaria,0
 578000101 6,578000101,578000101-6-1,-0.49,5.0,3.03,168.2,Urbano,Agua embotellada,Red pública (dentro),Rico,Superior,0
@@ -14720,9 +14720,9 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 595714901 4,595714901,595714901-4-2,-0.59,43.0,2.5,142.5,Urbano,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Secundaria,0
 595800701 2,595800701,595800701-2-1,-0.95,22.0,3.475,152.0,Urbano,Agua embotellada,Letrina (pozo ciego),Más Pobre,Secundaria,0
 595804201 2,595804201,595804201-2-1,-0.36,48.0,3.57,152.5,Urbano,Agua embotellada,Red pública (dentro),Pobre,Secundaria,0
+595808701 10,595808701,595808701-10-1,-1.11,5.0,2.795,152.5,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Pobre,Secundaria,0
 595808701 6,595808701,595808701-6-1,-1.52,0.0,3.01,150.6,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Pobre,Primaria,0
 595808701 6,595808701,595808701-6-2,-1.49,17.0,3.16,150.6,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Pobre,Primaria,0
-595808701 10,595808701,595808701-10-1,-1.11,5.0,2.795,152.5,Urbano,Agua por red pública (dentro),Letrina mejorada (ventilada),Pobre,Secundaria,0
 595809301 2,595809301,595809301-2-1,-0.61,7.0,3.37,156.0,Urbano,Pozo (dentro de viv.),Red pública (dentro),Pobre,Superior,0
 595809501 2,595809501,595809501-2-1,-1.58,17.0,3.275,164.0,Urbano,Agua embotellada,Red pública (dentro),Pobre,Secundaria,0
 595810101 2,595810101,595810101-2-1,-0.65,47.0,2.71,152.0,Urbano,Agua embotellada,Red pública (dentro),Rico,Superior,0
@@ -15334,8 +15334,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 606912101 2,606912101,606912101-2-1,0.55,57.0,2.96,152.8,Urbano,Agua embotellada,Red pública (dentro),Más Rico,Superior,0
 607007001 1,607007001,607007001-1-1,-0.71,37.0,4.0,152.8,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Superior,0
 607008801 2,607008801,607008801-2-1,-1.83,56.0,2.6,148.6,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Secundaria,0
-607010801 3,607010801,607010801-3-1,-0.58,38.0,3.75,164.9,Urbano,Camión cisterna,Letrina (pozo ciego),Más Pobre,Primaria,0
 607010801 10,607010801,607010801-10-1,-0.48,2.0,3.34,159.3,Urbano,Camión cisterna,Letrina (pozo ciego),Más Pobre,Secundaria,0
+607010801 3,607010801,607010801-3-1,-0.58,38.0,3.75,164.9,Urbano,Camión cisterna,Letrina (pozo ciego),Más Pobre,Primaria,0
 607012501 2,607012501,607012501-2-1,-0.36,31.0,3.12,149.3,Urbano,Agua por red pública (dentro),Red pública (fuera),Más Pobre,Secundaria,0
 607016901 7,607016901,607016901-7-1,-1.55,4.0,2.92,150.6,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Superior,0
 607100701 2,607100701,607100701-2-1,-2.21,16.0,4.06,145.2,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Pobre,Secundaria,1
@@ -16223,8 +16223,8 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 622910401 2,622910401,622910401-2-1,-1.9,32.0,3.0,153.2,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Secundaria,0
 622910401 2,622910401,622910401-2-2,-1.13,55.0,3.999,153.2,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Secundaria,0
 622910701 2,622910701,622910701-2-1,-0.33,35.0,3.8,148.8,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Secundaria,0
-622911301 6,622911301,622911301-6-1,-2.38,21.0,2.8,148.6,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,1
 622911301 11,622911301,622911301-11-1,-2.23,35.0,3.4,145.7,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Primaria,1
+622911301 6,622911301,622911301-6-1,-2.38,21.0,2.8,148.6,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,1
 623000201 2,623000201,623000201-2-1,-0.46,19.0,2.92,151.1,Urbano,Agua por red pública (dentro),Red pública (dentro),Pobre,Secundaria,0
 623005402 2,623005402,623005402-2-1,0.14,49.0,3.6,156.7,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Secundaria,0
 623005601 1,623005601,623005601-1-1,-2.35,0.0,2.99,163.3,Urbano,Agua por red pública (dentro),Red pública (dentro),Medio,Secundaria,1
@@ -16433,9 +16433,9 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 628305701 2,628305701,628305701-2-1,-1.68,7.0,3.605,150.9,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,0
 628306501 2,628306501,628306501-2-1,-1.75,54.0,2.8,157.3,Urbano,Agua embotellada,Red pública (dentro),Más Rico,Secundaria,0
 628402401 2,628402401,628402401-2-1,-0.99,4.0,2.753,144.8,Urbano,Agua por red pública (dentro),Red pública (dentro),Rico,Secundaria,0
+628416401 10,628416401,628416401-10-1,0.84,33.0,2.948,151.1,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Secundaria,0
 628416401 3,628416401,628416401-3-1,-0.03,20.0,3.198,155.8,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Primaria,0
 628416401 5,628416401,628416401-5-1,0.23,21.0,3.5,151.6,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Secundaria,0
-628416401 10,628416401,628416401-10-1,0.84,33.0,2.948,151.1,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Secundaria,0
 628508301 1,628508301,628508301-1-1,-0.72,26.0,3.895,151.4,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Secundaria,0
 628509301 2,628509301,628509301-2-1,-1.73,7.0,3.205,148.9,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Superior,0
 628517301 1,628517301,628517301-1-1,-0.42,48.0,2.56,152.0,Urbano,Agua por red pública (dentro),Red pública (dentro),Más Rico,Primaria,0
@@ -16774,9 +16774,9 @@ CASEID,HHID,LLAVE_NINIO,haz_score,edad_meses,peso_nacer_kg,talla_madre_cm,zona,a
 635004301 2,635004301,635004301-2-1,1.57,4.0,4.15,149.1,Rural,Agua por red pública (dentro),Pozo séptico,Más Pobre,Superior,0
 635004501 5,635004501,635004501-5-1,-0.28,44.0,3.3,161.5,Rural,Agua por red pública (dentro),Pozo séptico,Más Pobre,Superior,0
 635004501 8,635004501,635004501-8-1,-1.23,0.0,3.85,148.0,Rural,Agua por red pública (dentro),Pozo séptico,Más Pobre,Superior,0
+635004901 10,635004901,635004901-10-1,-1.48,41.0,3.0,145.0,Rural,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Superior,0
 635004901 2,635004901,635004901-2-1,-1.03,32.0,3.0,149.2,Rural,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Secundaria,0
 635004901 8,635004901,635004901-8-1,-3.39,1.0,2.0,149.9,Rural,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Secundaria,1
-635004901 10,635004901,635004901-10-1,-1.48,41.0,3.0,145.0,Rural,Agua por red pública (dentro),Letrina (pozo ciego),Más Pobre,Superior,0
 635100301 1,635100301,635100301-1-1,-0.82,22.0,3.5,150.7,Rural,Pozo (público),Letrina (pozo ciego),Más Pobre,Secundaria,0
 635100301 1,635100301,635100301-1-2,-0.87,54.0,3.94,150.7,Rural,Pozo (público),Letrina (pozo ciego),Más Pobre,Secundaria,0
 635102101 4,635102101,635102101-4-1,-0.84,41.0,2.8,152.8,Rural,Río/Acequia/Laguna,Letrina mejorada (ventilada),Pobre,Primaria,0

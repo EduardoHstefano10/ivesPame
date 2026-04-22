@@ -3,6 +3,7 @@
 Muestra la cantidad de registros por departamento, provincia y distrito
 usando el código UBIGEO (formato DDPPDD) y coordenadas (lat/lon).
 """
+import gzip
 import os
 import pandas as pd
 import plotly.express as px
@@ -12,7 +13,6 @@ import streamlit as st
 DATA_CSV = os.path.join("data", "processed", "endes_2024_unificado.csv")
 DATA_GZ = os.path.join("data", "processed", "endes_2024_unificado.csv.gz")
 # Preferimos el .gz (estable, menor tamaño, no bloqueado por OneDrive).
-DATA_PATH = DATA_GZ if os.path.exists(DATA_GZ) else DATA_CSV
 
 DEPARTAMENTOS = {
     "01": "Amazonas", "02": "Áncash", "03": "Apurímac", "04": "Arequipa",
@@ -26,12 +26,30 @@ DEPARTAMENTOS = {
 
 
 @st.cache_data(show_spinner="Cargando datos geográficos...")
-def cargar_datos_geograficos(path: str = DATA_PATH) -> pd.DataFrame:
+def cargar_datos_geograficos() -> pd.DataFrame:
     cols = [
         "H0_UBIGEO", "H0_LATITUDY", "H0_LONGITUDX",
         "REC91_SREGION", "zona", "Desnutricion_Cronica",
     ]
-    df = pd.read_csv(path, usecols=lambda c: c in cols)
+    last_error = None
+    df = None
+    for path in [DATA_GZ, DATA_CSV]:
+        if not os.path.exists(path):
+            continue
+        try:
+            if path.endswith(".gz"):
+                with gzip.open(path, "rb") as fh:
+                    fh.read(1)
+            df = pd.read_csv(path, usecols=lambda c: c in cols, low_memory=False)
+            df.attrs["source_path"] = path
+            break
+        except Exception as exc:
+            last_error = exc
+
+    if df is None:
+        if last_error is not None:
+            raise last_error
+        raise FileNotFoundError("No existe ningun dataset unificado legible.")
     df["UBIGEO"] = df["H0_UBIGEO"].astype(int).astype(str).str.zfill(6)
     df["dept_cod"] = df["UBIGEO"].str[:2]
     df["prov_cod"] = df["UBIGEO"].str[:4]
@@ -120,14 +138,26 @@ def dashboard_geografico_page() -> None:
         "según UBIGEO y coordenadas geográficas."
     )
 
-    if not os.path.exists(DATA_PATH):
+    if not os.path.exists(DATA_GZ) and not os.path.exists(DATA_CSV):
         st.error(
             "No se encontró el dataset unificado. Ejecuta "
             "`python scripts/unificar_datos.py` para generarlo."
         )
         return
 
-    df = cargar_datos_geograficos()
+    try:
+        df = cargar_datos_geograficos()
+    except Exception as exc:
+        st.error(f"No se pudo leer el dataset geogrÃ¡fico: {exc}")
+        st.info(
+            "Si el archivo `.csv.gz` quedÃ³ corrupto, el dashboard ahora intenta caer al `.csv`. "
+            "Si ambos fallan, vuelve a generar `endes_2024_unificado.csv`."
+        )
+        return
+
+    source_path = df.attrs.get("source_path")
+    if source_path:
+        st.caption(f"Fuente cargada: `{source_path}`")
 
     with st.sidebar:
         st.markdown("### 🎚️ Filtros")

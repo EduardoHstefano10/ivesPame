@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-04-22T23:34:10.984510+00:00",
+  "source": "scripts/unificar_datos.py",
+  "output_csv": "data/processed/endes_2024_unificado.csv",
+  "row_count": 49992,
+  "column_count": 2724,
+  "row_count_by_level": {
+    "hogar": 10732,
+    "mujer": 19509,
+    "nino": 19751
+  },
+  "unique_hhid": 37390,
+  "unique_caseid": 37117,
+  "unique_llave_ninio": 19751,
+  "duplicate_llave_ninio": 0,
+  "target_non_null": 18875,
+  "json_dictionaries": {
+    "RECH0": {
+      "path": "data/raw/968-Modulo1629/Diccionario_RECH0.json",
+      "metadata": {
+        "survey_name": "ENCUESTA DEMOGRÁFICA Y DE SALUD FAMILIAR ENDES",
+        "questionnaire": "DICCIONARIO DE VARIABLES CUESTIONARIO DEL HOGAR (RECH0)",
+        "source_file": "Diccionario - RECH0.pdf"
+      },
+      "variables_count": 44,
+      "sample_variables": [
+        {
+          "variable": "ID1",
+          "descripcion": "Año"
+        },
+        {
+          "variable": "HHID",
+          "descripcion": "Identificacion Cuestionario del Hogar"
+        },
+        {
+          "variable": "HV000",
+          "descripcion": "Código del país"
+        },
+        {
+          "variable": "HV001",
+          "descripcion": "Conglomerado"
+        },
+        {
+          "variable": "HV002",
+          "descripcion": "Vivienda"
+        },
+        {
+          "variable": "HV002A",
+          "descripcion": "Hogar"
+        },
+        {
+          "variable": "HV003",
+          "descripcion": "Número de orden del Informante del cuestionario del hogar"
+        },
+        {
+          "variable": "HV004",
+          "descripcion": "Unidad última de muestreo"
+        },
+        {
+          "variable": "HV007",
+          "descripcion": "Año de entrevista"
+        },
+        {
+          "variable": "HV008",
+          "descripcion": "Fecha de entrevista meses (CMC)"
+        }
+      ]
+    },
+    "RECH23": {
+      "path": "data/raw/968-Modulo1630/Diccionario_RECH23.json",
+      "metadata": {
+        "survey_name": "ENCUESTA DEMOGRÁFICA Y DE SALUD FAMILIAR ENDES",
+        "questionnaire": "DICCIONARIO DE VARIABLES CUESTIONARIO DEL HOGAR (RECH23)",
+        "variables_count": 14,
+        "source_file": "Screenshot 2025-09-08 at 10.39.30.png"
+      },
+      "variables_count": 130,
+      "sample_variables": [
+        {
+          "variable": "ID1",
+          "descripcion": "Año"
+        },
+        {
+          "variable": "HHID",
+          "descripcion": "Identificación Cuestionario del Hogar"
+        },
+        {
+          "variable": "HV201",
+          "descripcion": "¿Cuál es la fuente principal de abastecimiento de agua para tomar o beber?"
+        },
+        {
+          "variable": "HV202",
+          "descripcion": "¿Cuál es la fuente principal de abastecimiento de agua en su hogar?"
+        },
+        {
+          "variable": "HV204",
+          "descripcion": "¿Cuánto tiempo se demora en ir, recoger agua y volver?"
+        },
+        {
+          "variable": "HV205",
+          "descripcion": "¿Qué tipo de servicio higiénico tiene su hogar?"
+        },
+        {
+          "variable": "HV206",
+          "descripcion": "¿Tiene electricidad en su hogar?"
+        },
+        {
+          "variable": "HV207",
+          "descripcion": "Su hogar ¿tiene radio?"
+        },
+        {
+          "variable": "HV208",
+          "descripcion": "Su hogar ¿tiene televisor?"
+        },
+        {
+          "variable": "HV209",
+          "descripcion": "Su hogar ¿tiene refrigeradora/congeladora?"
+        }
+      ]
+    },
+    "REC0111": {
+      "path": "data/raw/968-Modulo1631/Diccionario_REC-0111.json",
+      "metadata": {},
+      "variables_count": 103,
+      "sample_variables": [
+        {
+          "variable": "CASEID",
+          "descripcion": "Identificación Cuestionario Individual"
+        },
+        {
+          "variable": "HHID",
+          "descripcion": "Identificación Cuestionario del Hogar"
+        },
+        {
+          "variable": "V000",
+          "descripcion": "Código y fase del pais"
+        },
+        {
+          "variable": "V001",
+          "descripcion": "Conglomerado"
+        },
+        {
+          "variable": "V002",
+          "descripcion": "Nümero de vivienda"
+        },
+        {
+          "variable": "V003",
+          "descripcion": "Número de linea de entrevistada"
+        },
+        {
+          "variable": "V004",
+          "descripcion": "Unidad de área final"
+        },
+        {
+          "variable": "V007",
+          "descripcion": "Año de la entrevista"
+        },
+        {
+          "variable": "V008",
+          "descripcion": "Fecha de la entrevista, Codificación centenarna de meses (CMC)"
+        },
+        {
+          "variable": "Q105DD",
+          "descripcion": "Dia de nacimeinto de la entrevistada"
+        }
+      ]
+    }
+  }
+}

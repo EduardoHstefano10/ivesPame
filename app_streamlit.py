@@ -12,7 +12,9 @@ from dashboard_geografico import dashboard_geografico_page
 
 MODEL_PATH = os.path.join("models", "desnutricion_model_v1.joblib")
 METADATA_PATH = os.path.join("models", "desnutricion_model_v1_metadata.json")
-DATA_PATH = os.path.join("data", "processed", "mvp_dataset_fase3_limpio.csv")
+MASTER_DATA_PATH = os.path.join("data", "processed", "endes_2024_unificado.csv")
+MASTER_DATA_GZ_PATH = os.path.join("data", "processed", "endes_2024_unificado.csv.gz")
+MVP_DATA_PATH = os.path.join("data", "processed", "mvp_dataset_fase3_limpio.csv")
 
 
 @st.cache_resource
@@ -43,15 +45,26 @@ def get_ohe_categories(best_estimator):
 
 
 @st.cache_data
-def load_data():
+def load_data(path):
     """Cargar dataset para visualizaciones"""
-    if os.path.exists(DATA_PATH):
-        df = pd.read_csv(DATA_PATH)
+    if os.path.exists(path):
+        df = pd.read_csv(path, low_memory=False)
         df.columns = df.columns.str.strip()
         for c in df.select_dtypes(include="object").columns:
             df[c] = df[c].str.strip()
         return df
     return None
+
+
+def get_analytics_sources():
+    master_path = None
+    if os.path.exists(MASTER_DATA_GZ_PATH):
+        master_path = MASTER_DATA_GZ_PATH
+    elif os.path.exists(MASTER_DATA_PATH):
+        master_path = MASTER_DATA_PATH
+
+    mvp_path = MVP_DATA_PATH if os.path.exists(MVP_DATA_PATH) else None
+    return master_path, mvp_path
 
 
 def predictor_page(model_obj, best_estimator, metadata, categories):
@@ -410,6 +423,214 @@ def analytics_page():
             st.plotly_chart(fig_scatter2, width='stretch')
 
 
+def analytics_page_v2():
+    """Pagina de analisis usando maestro unificado o muestra MVP."""
+    st.title("Analisis y Visualizaciones del Modelo")
+
+    master_path, mvp_path = get_analytics_sources()
+    if master_path is None and mvp_path is None:
+        st.error(
+            "No se pudo cargar ningun dataset. Genera `data/processed/endes_2024_unificado.csv` "
+            "y/o `data/processed/mvp_dataset_fase3_limpio.csv`."
+        )
+        return
+
+    source_options = []
+    if master_path is not None:
+        source_options.append("Maestro unificado")
+    if mvp_path is not None:
+        source_options.append("Muestra completa para modelo")
+
+    selected_source = st.radio(
+        "Fuente de datos para analitica",
+        source_options,
+        horizontal=True,
+        key="analytics_source_radio",
+    )
+    active_path = master_path if selected_source == "Maestro unificado" else mvp_path
+    df = load_data(active_path)
+
+    if df is None:
+        st.error(f"No se pudo cargar el dataset en `{active_path}`")
+        return
+
+    df_model = df.copy()
+    required_cols = [
+        "haz_score", "edad_meses", "peso_nacer_kg", "talla_madre_cm",
+        "zona", "agua", "saneamiento", "riqueza", "educacion_madre",
+    ]
+    available_required = [c for c in required_cols if c in df_model.columns]
+    if available_required:
+        df_model = df_model.dropna(subset=available_required)
+    if "Desnutricion_Cronica" not in df_model.columns and "haz_score" in df_model.columns:
+        df_model["Desnutricion_Cronica"] = (
+            pd.to_numeric(df_model["haz_score"], errors="coerce") < -2
+        ).astype(int)
+
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Registros fuente", f"{len(df):,}")
+    c2.metric("Registros usables", f"{len(df_model):,}")
+    c3.metric("Fuente activa", selected_source)
+
+    if selected_source == "Maestro unificado":
+        st.caption(
+            "El maestro unificado conserva mas filas. Los graficos del modelo usan solo la parte con variables requeridas."
+        )
+    else:
+        st.caption(
+            "La muestra del modelo ya viene filtrada por completitud, por eso suele tener menos registros."
+        )
+
+    if df_model.empty:
+        st.warning("La fuente seleccionada no tiene suficientes columnas completas para los graficos del modelo.")
+        return
+
+    tab1, tab2, tab3, tab4 = st.tabs(["Distribuciones", "Correlaciones", "Variables Clave", "Analisis por Grupos"])
+
+    with tab1:
+        st.markdown("### Distribucion de Variables")
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            fig_haz = px.histogram(
+                df_model,
+                x="haz_score",
+                nbins=50,
+                title="Distribucion del HAZ Score (Talla/Edad)",
+                labels={"haz_score": "HAZ Score"},
+                color_discrete_sequence=["#636EFA"],
+            )
+            fig_haz.add_vline(x=-2, line_dash="dash", line_color="red", annotation_text="Umbral Desnutricion (-2 SD)")
+            st.plotly_chart(fig_haz, width="stretch")
+
+            st.metric("Media HAZ Score", f"{df_model['haz_score'].mean():.2f}")
+            st.metric(
+                "% con Desnutricion (<-2 SD)",
+                f"{(df_model['haz_score'] < -2).sum() / len(df_model) * 100:.1f}%",
+            )
+
+        with col2:
+            fig_edad = px.histogram(
+                df_model,
+                x="edad_meses",
+                nbins=60,
+                title="Distribucion de Edad (meses)",
+                labels={"edad_meses": "Edad (meses)"},
+                color_discrete_sequence=["#EF553B"],
+            )
+            st.plotly_chart(fig_edad, width="stretch")
+
+            st.metric("Edad Media", f"{df_model['edad_meses'].mean():.1f} meses")
+            st.metric("Rango", f"{df_model['edad_meses'].min():.0f} - {df_model['edad_meses'].max():.0f} meses")
+
+    with tab2:
+        st.markdown("### Matriz de Correlacion")
+        if os.path.exists("notebooks/tabla_2_correlacion.csv"):
+            corr_df = pd.read_csv("notebooks/tabla_2_correlacion.csv", index_col=0)
+            labels_mapping = {
+                "V106": "V106 (Educacion Madre)",
+                "HV270": "HV270 (Riqueza)",
+                "HV025": "HV025 (Zona)",
+            }
+            corr_df = corr_df.rename(columns=labels_mapping, index=labels_mapping)
+            fig_corr = px.imshow(
+                corr_df,
+                text_auto=".2f",
+                aspect="auto",
+                color_continuous_scale="RdBu_r",
+                title="Correlacion entre Variables",
+            )
+            st.plotly_chart(fig_corr, width="stretch")
+
+    with tab3:
+        st.markdown("### Impacto de Variables Clave")
+        df_model["desnutrido"] = (df_model["haz_score"] < -2).astype(int)
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            zona_stats = df_model.groupby("zona")["desnutrido"].agg(["sum", "count", "mean"]).reset_index()
+            zona_stats["porcentaje"] = zona_stats["mean"] * 100
+            fig_zona = px.bar(
+                zona_stats,
+                x="zona",
+                y="porcentaje",
+                title="% Desnutricion por Zona",
+                labels={"porcentaje": "% Desnutridos", "zona": "Zona"},
+                color="porcentaje",
+                color_continuous_scale="Reds",
+            )
+            st.plotly_chart(fig_zona, width="stretch")
+
+        with col2:
+            if "educacion_madre" in df_model.columns:
+                edu_stats = df_model.groupby("educacion_madre")["desnutrido"].agg(["sum", "count", "mean"]).reset_index()
+                edu_stats["porcentaje"] = edu_stats["mean"] * 100
+                fig_edu = px.bar(
+                    edu_stats,
+                    x="educacion_madre",
+                    y="porcentaje",
+                    title="% Desnutricion por Educacion Materna",
+                    labels={"porcentaje": "% Desnutridos", "educacion_madre": "Nivel Educativo"},
+                    color="porcentaje",
+                    color_continuous_scale="Oranges",
+                )
+                st.plotly_chart(fig_edu, width="stretch")
+
+        if "riqueza" in df_model.columns:
+            riq_stats = df_model.groupby("riqueza")["desnutrido"].agg(["sum", "count", "mean"]).reset_index()
+            riq_stats["porcentaje"] = riq_stats["mean"] * 100
+            fig_riq = px.bar(
+                riq_stats,
+                x="riqueza",
+                y="porcentaje",
+                title="% Desnutricion por Nivel de Riqueza",
+                labels={"porcentaje": "% Desnutridos", "riqueza": "Nivel de Riqueza"},
+                color="porcentaje",
+                color_continuous_scale="RdYlGn_r",
+            )
+            st.plotly_chart(fig_riq, width="stretch")
+
+    with tab4:
+        st.markdown("### Analisis Comparativo")
+        fig_box_zona = px.box(
+            df_model,
+            x="zona",
+            y="haz_score",
+            title="Distribucion HAZ Score por Zona",
+            color="zona",
+        )
+        fig_box_zona.add_hline(y=-2, line_dash="dash", line_color="red")
+        st.plotly_chart(fig_box_zona, width="stretch")
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            fig_scatter1 = px.scatter(
+                df_model.sample(min(1000, len(df_model))),
+                x="peso_nacer_kg",
+                y="haz_score",
+                title="Peso al Nacer vs HAZ Score",
+                opacity=0.6,
+                trendline="ols",
+            )
+            fig_scatter1.add_hline(y=-2, line_dash="dash", line_color="red")
+            st.plotly_chart(fig_scatter1, width="stretch")
+
+        with col2:
+            fig_scatter2 = px.scatter(
+                df_model.sample(min(1000, len(df_model))),
+                x="talla_madre_cm",
+                y="haz_score",
+                title="Talla Madre vs HAZ Score",
+                opacity=0.6,
+                trendline="ols",
+            )
+            fig_scatter2.add_hline(y=-2, line_dash="dash", line_color="red")
+            st.plotly_chart(fig_scatter2, width="stretch")
+
+
 def main():
     st.set_page_config(
         page_title="Predictor Desnutrición Infantil",
@@ -465,7 +686,7 @@ def main():
     if page == "🔮 Predicción Individual":
         predictor_page(model_obj, best_estimator, metadata, categories)
     else:
-        analytics_page()
+        analytics_page_v2()
 
 
 if __name__ == '__main__':

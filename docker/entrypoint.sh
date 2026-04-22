@@ -14,9 +14,9 @@ if [[ "${UNIFICAR:-auto}" == "force" ]] || [[ ! -f "$CSV" && ! -f "$GZ" ]]; then
     START=$(date +%s)
     python scripts/unificar_datos.py
     END=$(date +%s)
-    echo ">> [entrypoint] Unificación completada en $((END - START)) s."
+    echo ">> [entrypoint] Unificacion completada en $((END - START)) s."
 else
-    echo ">> [entrypoint] Dataset unificado ya existe, se omite la unificación."
+    echo ">> [entrypoint] Dataset unificado ya existe, se omite la unificacion."
     echo ">> [entrypoint] (usa UNIFICAR=force para regenerarlo)"
 fi
 

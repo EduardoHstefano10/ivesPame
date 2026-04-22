@@ -21,7 +21,7 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 # 2) Copia el código del proyecto.
 COPY . .
 
-RUN chmod +x docker/entrypoint.sh
+RUN sed -i 's/\r$//' docker/*.sh && chmod +x docker/entrypoint.sh
 
 EXPOSE 8501
 

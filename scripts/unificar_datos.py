@@ -28,6 +28,7 @@ para facilitar auditoria.
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 import time
@@ -45,6 +46,7 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 RAW_DIR = BASE_DIR / "data" / "raw"
 OUT_DIR = BASE_DIR / "data" / "processed"
 OUT_PATH = OUT_DIR / "endes_2024_unificado.csv"
+OUT_METADATA_PATH = OUT_DIR / "endes_2024_unificado_metadata.json"
 
 # Codigos "missing" tipicos de ENDES/DHS. Se aplican solo a columnas numericas.
 MISSING_CODES: tuple[float, ...] = (
@@ -139,6 +141,12 @@ MAPA_RIQUEZA = {1: "Más Pobre", 2: "Pobre", 3: "Medio", 4: "Rico", 5: "Más Ric
 MAPA_EDUCACION = {0: "Sin Educación", 1: "Primaria", 2: "Secundaria", 3: "Superior"}
 MAPA_SEXO = {1: "Hombre", 2: "Mujer"}
 
+JSON_DICTIONARIES: dict[str, Path] = {
+    "RECH0": RAW_DIR / "968-Modulo1629" / "Diccionario_RECH0.json",
+    "RECH23": RAW_DIR / "968-Modulo1630" / "Diccionario_RECH23.json",
+    "REC0111": RAW_DIR / "968-Modulo1631" / "Diccionario_REC-0111.json",
+}
+
 
 # ---------------------------------------------------------------------------
 # 2. Utilidades de limpieza
@@ -183,6 +191,34 @@ def drop_shared(df: pd.DataFrame) -> pd.DataFrame:
 def first_row_per(df: pd.DataFrame, keys: list[str]) -> pd.DataFrame:
     """Garantiza unicidad del grano (una fila por combinacion de llaves)."""
     return df.drop_duplicates(subset=keys, keep="first")
+
+
+def load_json_dictionary(path: Path) -> dict:
+    with path.open("r", encoding="utf-8") as fh:
+        return json.load(fh)
+
+
+def summarize_json_dictionaries() -> dict[str, dict]:
+    summary: dict[str, dict] = {}
+    for mod, path in JSON_DICTIONARIES.items():
+        if not path.exists():
+            continue
+        raw = load_json_dictionary(path)
+        variables = raw.get("variables") or raw.get("diccionario_variables") or []
+        metadata = raw.get("metadata", {})
+        summary[mod] = {
+            "path": str(path.relative_to(BASE_DIR)),
+            "metadata": metadata,
+            "variables_count": len(variables),
+            "sample_variables": [
+                {
+                    "variable": v.get("variable"),
+                    "descripcion": v.get("descripcion"),
+                }
+                for v in variables[:10]
+            ],
+        }
+    return summary
 
 
 # ---------------------------------------------------------------------------
@@ -373,11 +409,34 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     # --- Llave unica del niño: "{HHID}-{MADRE_LINE}-{NINIO_IDX}" ---
     # Varias madres pueden compartir HHID; incluimos la linea de la madre
     # (segundo token de CASEID "HHID LINE") para que la llave sea unica.
-    hhid_clean = df["HHID"].astype(str).str.strip().str.replace(r"\s+", "", regex=True)
-    caseid_clean = df["CASEID"].astype(str).str.strip()
+    hhid_clean = df["HHID"].astype("string").str.strip().str.replace(r"\s+", "", regex=True)
+    caseid_clean = df["CASEID"].astype("string").str.strip()
     madre_line = caseid_clean.str.split(" ").str[-1].str.strip()
-    idx_clean = df["NINIO_IDX"].astype(str).str.strip()
-    df["LLAVE_NINIO"] = hhid_clean + "-" + madre_line + "-" + idx_clean
+    idx_clean = df["NINIO_IDX"].astype("string").str.strip()
+    child_key_mask = (
+        hhid_clean.notna()
+        & caseid_clean.notna()
+        & idx_clean.notna()
+        & (hhid_clean != "")
+        & (caseid_clean != "")
+        & (idx_clean != "")
+        & (idx_clean.str.lower() != "nan")
+    )
+    df["LLAVE_NINIO"] = pd.Series(pd.NA, index=df.index, dtype="string")
+    df.loc[child_key_mask, "LLAVE_NINIO"] = (
+        hhid_clean[child_key_mask]
+        + "-"
+        + madre_line[child_key_mask]
+        + "-"
+        + idx_clean[child_key_mask]
+    )
+
+    woman_key_mask = caseid_clean.notna() & (caseid_clean != "") & (caseid_clean.str.lower() != "nan")
+    df["NIVEL_REGISTRO"] = np.select(
+        [child_key_mask, woman_key_mask],
+        ["nino", "mujer"],
+        default="hogar",
+    )
 
     return df
 
@@ -385,7 +444,7 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
 def reorder_columns(df: pd.DataFrame) -> pd.DataFrame:
     """Deja las columnas clave interpretables primero, el resto ordenadas alfabeticamente."""
     preferred = [
-        "CASEID", "HHID", "NINIO_IDX", "LLAVE_NINIO",
+        "CASEID", "HHID", "NINIO_IDX", "LLAVE_NINIO", "NIVEL_REGISTRO",
         "Desnutricion_Cronica", "haz_score",
         "edad_meses", "sexo_nino", "peso_nacer_kg",
         "edad_madre", "talla_madre_cm", "peso_madre_kg", "educacion_madre",
@@ -426,9 +485,40 @@ def main() -> int:
 
     # Deduplicación: la llave natural ahora es (HHID, CASEID, NINIO_IDX).
     before = len(df)
-    df = df.drop_duplicates(subset=["HHID", "CASEID", "NINIO_IDX"], keep="first")
+    if "NIVEL_REGISTRO" in df.columns:
+        child_rows = df[df["NIVEL_REGISTRO"] == "nino"].drop_duplicates(
+            subset=["HHID", "CASEID", "NINIO_IDX"], keep="first"
+        )
+        woman_rows = df[df["NIVEL_REGISTRO"] == "mujer"].drop_duplicates(
+            subset=["HHID", "CASEID"], keep="first"
+        )
+        household_rows = df[df["NIVEL_REGISTRO"] == "hogar"].drop_duplicates(
+            subset=["HHID"], keep="first"
+        )
+        df = pd.concat([child_rows, woman_rows, household_rows], ignore_index=True, sort=False)
+    else:
+        df = df.drop_duplicates(subset=["HHID", "CASEID", "NINIO_IDX"], keep="first")
     if before != len(df):
         log(f"drop_duplicates: {before} -> {len(df)} filas")
+
+    dup_child_keys = int(df["LLAVE_NINIO"].dropna().duplicated().sum()) if "LLAVE_NINIO" in df.columns else 0
+    metadata = {
+        "generated_at": pd.Timestamp.utcnow().isoformat(),
+        "source": "scripts/unificar_datos.py",
+        "output_csv": str(OUT_PATH.relative_to(BASE_DIR)),
+        "row_count": int(len(df)),
+        "column_count": int(df.shape[1]),
+        "row_count_by_level": (
+            df["NIVEL_REGISTRO"].value_counts(dropna=False).sort_index().to_dict()
+            if "NIVEL_REGISTRO" in df.columns else {}
+        ),
+        "unique_hhid": int(df["HHID"].nunique(dropna=True)) if "HHID" in df.columns else 0,
+        "unique_caseid": int(df["CASEID"].nunique(dropna=True)) if "CASEID" in df.columns else 0,
+        "unique_llave_ninio": int(df["LLAVE_NINIO"].nunique(dropna=True)) if "LLAVE_NINIO" in df.columns else 0,
+        "duplicate_llave_ninio": dup_child_keys,
+        "target_non_null": int(df["Desnutricion_Cronica"].notna().sum()) if "Desnutricion_Cronica" in df.columns else 0,
+        "json_dictionaries": summarize_json_dictionaries(),
+    }
 
     log(f"Guardando CSV unificado en {OUT_PATH} ...")
     df.to_csv(OUT_PATH, index=False)
@@ -437,6 +527,12 @@ def main() -> int:
     gz_path = OUT_PATH.with_suffix(".csv.gz")
     log(f"Guardando versión comprimida en {gz_path} ...")
     df.to_csv(gz_path, index=False, compression="gzip")
+
+    log(f"Guardando metadata en {OUT_METADATA_PATH} ...")
+    OUT_METADATA_PATH.write_text(
+        json.dumps(metadata, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
 
     log(f"OK. Dimensiones finales: {df.shape}")
     target_nn = df["Desnutricion_Cronica"].notna().sum() if "Desnutricion_Cronica" in df.columns else 0
