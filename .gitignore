@@ -4,3 +4,6 @@
 .DS_Store
 .venv/
 __pycache__/
+
+# Dataset unificado (versión sin comprimir es muy grande; usar .csv.gz).
+data/processed/endes_2024_unificado.csv

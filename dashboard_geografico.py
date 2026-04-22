@@ -9,7 +9,9 @@ import plotly.express as px
 import streamlit as st
 
 
-DATA_PATH = os.path.join("data", "processed", "endes_2024_unificado.csv")
+DATA_CSV = os.path.join("data", "processed", "endes_2024_unificado.csv")
+DATA_GZ = os.path.join("data", "processed", "endes_2024_unificado.csv.gz")
+DATA_PATH = DATA_CSV if os.path.exists(DATA_CSV) else DATA_GZ
 
 DEPARTAMENTOS = {
     "01": "Amazonas", "02": "Áncash", "03": "Apurímac", "04": "Arequipa",
@@ -118,7 +120,10 @@ def dashboard_geografico_page() -> None:
     )
 
     if not os.path.exists(DATA_PATH):
-        st.error(f"No se encontró el dataset: {DATA_PATH}")
+        st.error(
+            "No se encontró el dataset unificado. Ejecuta "
+            "`python scripts/unificar_datos.py` para generarlo."
+        )
         return
 
     df = cargar_datos_geograficos()
