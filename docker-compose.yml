@@ -7,6 +7,9 @@ services:
     container_name: ivespame
     ports:
       - "8501:8501"
+    # Carga variables desde el archivo .env del proyecto (si existe).
+    env_file:
+      - .env
     environment:
       # UNIFICAR=force regenera el dataset al arrancar. Por defecto "auto":
       # solo lo genera si no existe.

@@ -32,11 +32,15 @@ if ($Logs)  { docker compose logs -f;    exit $LASTEXITCODE }
 
 if ($Fresh) { $env:UNIFICAR = "force" } else { $env:UNIFICAR = "auto" }
 
-Write-Host ">> Construyendo imagen y levantando contenedor..." -ForegroundColor Cyan
-docker compose up --build -d
+if (-not (Test-Path ".env")) {
+    if (Test-Path ".env.example") {
+        Write-Host ">> No se encontro .env, copiando .env.example -> .env" -ForegroundColor Yellow
+        Copy-Item ".env.example" ".env"
+    }
+}
 
-if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+Write-Host ">> Construyendo imagen y levantando contenedor (logs en esta consola)..." -ForegroundColor Cyan
+Write-Host ">> URL: http://localhost:8501  (Ctrl+C detiene el contenedor)" -ForegroundColor Green
 
-Write-Host ">> Contenedor corriendo en http://localhost:8501" -ForegroundColor Green
-Write-Host ">> Siguiendo logs (Ctrl+C para salir, el contenedor sigue vivo)..." -ForegroundColor DarkGray
-docker compose logs -f
+# Modo foreground: los logs van directos a la consola de VS Code.
+docker compose up --build
